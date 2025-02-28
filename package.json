@@ -9,6 +9,7 @@
   "scripts": {
     "grunt": "grunt",
     "build": "grunt build",
+    "start-dev": "grunt start-dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

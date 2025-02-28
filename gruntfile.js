@@ -94,12 +94,14 @@ module.exports = function(grunt) {
         copy: {
             dev: {
                 expand:true,
+                flatten:true,
                 src: ['src/images/*'],
                 dest: 'dev/images/',
                 filter: 'isFile'
             },
             dist: {
                 expand:true,
+                flatten:true,
                 src: ['src/images/*'],
                 dest: 'dist/images/',
                 filter: 'isFile'
@@ -116,5 +118,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-copy");
     
     grunt.registerTask('default', ['watch'])
+    grunt.registerTask('start-dev', ['copy:dev', 'less:development', 'replace:dev', 'watch'])
     grunt.registerTask('build', ['less:production', 'htmlmin:dist', 'replace:dist', 'clean', 'uglify', 'copy:dist'])
 }
