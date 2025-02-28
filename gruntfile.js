@@ -23,7 +23,7 @@ module.exports = function(grunt) {
             },
             html: {
                 files: ["src/index.html"],
-                tasks: ["replace:dev", "imagemin:dev"]
+                tasks: ["replace:dev"]
             }
         },
         replace :{
