@@ -1,3 +1,5 @@
+let Livros = [];
+
 $(document).ready(function () {
   $(".livros button").click(function () {
     //constante do novo item no carrinho
@@ -10,6 +12,11 @@ $(document).ready(function () {
     const imagenLivro = $(this).parent().find("img").attr("src");
     const nomeLivro = $(this).parent().find("h3").text();
     const valorLivro = $(this).parent().find("p").text();
+    const Livro = {
+      imagem: imagenLivro,
+      nome: nomeLivro,
+      valor: valorLivro,
+    };
 
     //função para adicionar as contantes do livro à constante do novo elemento no carrinho
     $(` 
@@ -24,6 +31,8 @@ $(document).ready(function () {
     //função q adiciona a constante do novo item ao html
     $(novaLista).appendTo("#carrinhoDeCompras");
 
+    Livros.push(Livro);
+
     //função q analisa se há notificação de item novo
     if ($("#botaoCarrinho").has($("p"))) {
       $($("#notificacaoCarrinho")).remove();
@@ -32,9 +41,13 @@ $(document).ready(function () {
       $(notificacao).appendTo("#botaoCarrinho");
     }
 
+    console.log(Livros);
+
     //botão de apagar
     $(".apagar").click(function () {
       $(this).parent().remove();
+      Livros = Livros.filter((livro) => livro !== Livro);
+      console.log(Livros);
     });
   });
 
